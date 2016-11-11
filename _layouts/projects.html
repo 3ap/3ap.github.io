@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<main>
+  <div class="products">
+    <div class="products-inner">
+      {% for product in site.products %}
+      <section class="products__item">
+        <div class="product-photo">
+          <img src="{{ screenshot }}" />
+          <div class="product-tags">
+          {% for tag in product.tags %}
+            <span class="product-tag">{{ tag }}</span>
+          {% endfor %}
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-header">
+            <img class="product-icon" src="{{ product.icon }}" />
+            <span class="product-title">{{ product.title }}</span>
+          </div>
+          <div class="product-description">{{ product.description }}</div>
+          <div class="product-link">
+            {% if product.url == "unknown" %}
+              <a target="_blank" class="product-link-passive">Недоступно</a>
+            {% else %}
+              <a href="{{ product.url }}" target="_blank" class="product-link-active">Перейти на сайт</a>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      {% endfor %}
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</main>
+<footer>
+  <div class="information">
+    <div class="additional">
+      <h2>
+        А также…
+      </h2>
+      <ul class="left">
+        <li>несколько сервисов:
+          <ul>
+          {% for service in site.services %}
+          <li><a class="product-link-active" target="_blank" href="{{ service.url }}">{{ service.title }}</a></li>
+          {% endfor %}
+          </ul>
+        </li>
+      </ul>
+      <ul class="right">
+        <li>множество мелких и/или неопубликованных сайтов:
+          <ul>
+          {% for item in site.sites %}
+          <li><a class="product-link-active" target="_blank" href="{{ item.url }}">{{ item.title }}</a></li>
+          {% endfor %}
+          </ul>
+        </li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <iframe src="http://game.nazaryev.ru/game.html" id="game" class="game"></iframe>
+  <script>
+    document.querySelector("#game").onload = function() {
+      this.contentWindow.focus();
+    }
+  </script>
+</footer>

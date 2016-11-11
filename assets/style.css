@@ -1,0 +1,268 @@
+body {
+  overflow-y: scroll;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+  text-rendering: optimizeLegibility;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.6;
+  color: #444;
+  font-size: 18px;
+}
+
+:focus {
+  outline: none;
+}
+
+a {
+  border-bottom: 1px solid #B5D9F1;
+  text-decoration: none;
+  color: #45A1DC;
+}
+
+a:hover {
+  color: #B5D9F1;
+}
+
+a img {
+  border: none;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+p, h3 {
+  padding: 0;
+  margin: 0;
+}
+
+a[href^="http://"]:after,
+a[href^="https://"]:after {
+  content: url(external-link.png);
+  margin: 0 0 0 2px;
+}
+
+img, .product-tags {
+  -khtml-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#content *::selection {
+  background: none repeat scroll 0% 0% #D6EDFC;
+}
+
+#content *::-moz-selection {
+  background: none repeat scroll 0% 0% #D6EDFC;
+}
+
+.contacts {
+  padding-top: 5px;
+  float: left;
+}
+
+.contacts__position {
+  vertical-align: middle;
+  line-height: 15px;
+  font-size: 15px;
+}
+
+.contacts__name {
+  font-size: 25px;
+}
+
+.post {
+  padding: 20px 40px;
+}
+
+main {
+  width: 1160px;
+}
+
+nav {
+  width: 1160px;
+  margin: 0 40px;
+  background: white;
+  height: 80px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-horizontal {
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.menu-horizontal__item {
+  margin: 0px 0px 0px 15px;
+  display: inline;
+  float: left;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+}
+
+.game {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  height: 339px;
+}
+
+.menu {
+  padding-top: 10px;
+  float: left;
+}
+
+.additional {
+  padding: 50px;
+}
+
+.additional h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 60px;
+}
+
+.additional ul li {
+  list-style-type: none;
+}
+
+.additional ul li:before {
+  content: "— ";
+}
+
+.product-photo {
+  display: none;
+  float: left;
+  padding-top: 10px;
+  width: 250px;
+}
+
+.product-photo img {
+  width: 280px;
+}
+
+.product-tags {
+  padding-left: 40px;
+  text-align: left;
+}
+
+.product-tag {
+  color: white;
+  padding: 5px 10px 8px 10px;
+  margin: 2px;
+  background: #4779f6;
+  border-radius: 15px;
+}
+
+.products {
+  padding: 15px 35px;
+}
+
+.products__item {
+  display: inline-block;
+  width: 325px;
+  margin: 5px;
+  border: 1px solid #ddd;
+}
+
+.product-info {
+  padding: 20px 10px 15px 25px;
+}
+
+.product-description {
+  font-size: 14px;
+  line-height: 1.5;
+  max-height: 170px;
+  height: 170px;
+}
+
+.product-icon {
+  float: left;
+  padding-right: 10px;
+  height: 55px;
+}
+
+.product-header {
+  margin-bottom: 10px;
+  height: 55px;
+}
+
+.product-title {
+  display: block;
+  padding-top: 10px;
+  font-size: 24px;
+}
+
+.product-link-passive:hover {
+  cursor: default !important;
+}
+
+main ul, main ol {
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
+
+main ul li:before {
+  content: "— ";
+  display: inline-block;
+  width: 7px;
+  margin: 0 0 0 -25px;
+  text-align: center;
+  font-size: 0.9em;
+  position: absolute;
+}
+
+main ul p {
+  margin: 0px;
+  line-height: 31px;
+}
+
+main p {
+  line-height: 25px;
+  margin: 20px;
+}
+
+main ul {
+  padding: 0;
+  list-style: none;
+  line-height: 31px;
+}
+
+main h1, main h2 {
+  padding: 0;
+  color: #282425;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+main h2  {
+  font-size: 20px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: left;
+}
+
+.clear {
+  clear: both;
+}

@@ -1,0 +1,110 @@
+name: Сергей Назарьев
+position: Software Developer
+location: Saint Petersburg
+email: sergey@nazaryev.ru
+description: Сергей Назарьев. Разработчик всяких IT-штук. Санкт-Петербург.
+markdown: kramdown
+
+links:
+  - title: "CV"
+    url:   "http://forge.nazaryev.ru/CV.pdf"
+
+  - title: "File Archive"
+    url:   "http://files.nazaryev.ru/"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+services:
+  - title: "Фильтр twitch-стримов"
+    url:   "http://twitch.nazaryev.ru"
+
+  - title: "Минималистичный pastebin-like сервис"
+    url:   "http://codeo.tk"
+
+  - title: "Файлопомойка"
+    url:   "http://files.nazaryev.ru"
+
+sites:
+  - title: "Газовик"
+    url:   "http://gazovik.ru"
+
+  - title: "Кинотеатр Пионер"
+    url:   "http://pioner-kino.ru"
+
+  - title: "Океан-тур"
+    url:   "http://okean-tur.ru"
+
+products:
+  - title: "MobiumApps"
+    url: http://cp.mobiumapps.com
+    screenshot: assets/products/mobium.png
+    icon: assets/products/mobium_icon.png
+    tags: [ ASP.NET, Вёрстка ]
+    description: >
+                   Некоторое время по работе поддерживал панель для клиентов
+                   сервиса по созданию кроссплатформенных приложений. В
+                   свободное от реализации функционала время приходилось
+                   подправлять UI.
+
+  - title: "Galaxy RPG"
+    url: http://galaxy-rpg.ru
+    screenshot: assets/products/gy.png
+    icon: assets/products/gy_icon.png
+    tags: [ MODx, PHP ]
+    description: >
+                   По старой дружбе с клиентом выступил в этом проекте в роли
+                   менеджера и программиста: тесно взаимодействовал с клиентом,
+                   верстальщиком и дизайнером.
+
+  - title: "Эксхостинг"
+    url: unknown
+    screenshot: assets/products/exhosting.png
+    icon: assets/products/exhosting_icon.png
+    tags: [ PHP, Linux ]
+    description: >
+                   Ныне уже несуществующий игровой хостинг. Для него была
+                   сделана удобная и простая панель для управления игровыми
+                   серверами. Реализовано распределение серверов на несколько
+                   машин.
+
+  - title: "Копипаста"
+    url: https://play.google.com/store/apps/details?id=ru.copypaste
+    screenshot: assets/products/kopipasta.png
+    icon: assets/products/kopipasta_icon.png
+    tags: [ Android, Java ]
+    description: >
+                   Читалка сайта Kopipasta.ru с кэшированием и системой
+                   избранного. Проба пера.
+
+  - title: "Суши-бар"
+    url: unknown
+    screenshot: assets/products/lovesushi.png
+    icon: assets/products/lovesushi_icon.png
+    tags: [ Android, Java ]
+    description: >
+                   Меню для суши-бара Love Суши (г. Саратов). Используется
+                   вместо традиционного бумажного меню.
+
+  - title: "Юрком"
+    url: http://cpt-yurcom.ru
+    screenshot: assets/products/yurcom.png
+    icon: assets/products/yurcom_icon.png
+    tags: [ PHP, MODx ]
+    description: >
+                   Портал юристов, сделанный под эгидой Nopreset (топовой
+                   web-студии г. Саратова). Реализован back-end под управлением
+                   CMS\CMF MODx с огромным деревом ресурсов и всяческих
+                   хитростей.
+
+  - title: "Эмутим"
+    url: unknown
+    screenshot: assets/products/emuteam.png
+    icon: assets/products/emuteam_icon.png
+    tags: [ Вёрстка, Дизайн ]
+    description: >
+                   Сайт «стримеров» — игроков, показывающих игровой процесс в
+                   прямом эфире. Я был их посетителем, когда ещё их сайт был
+                   одностраничным. Провёл два редизайна, попробовал себя в роли
+                   веб-дизайнера.
