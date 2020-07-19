@@ -2,37 +2,37 @@
 layout: page
 ---
 
-Что же я могу показать?
-=======================
+What can I show you
+===================
 
-  - У меня есть набор [dotfiles][dotfiles], который я использую на
-    большинстве своих устройств;
+  - [Dotfiles][dotfiles] repo that I use on almost all my
+    devices;
 
-  - [Подсчёт статистики сетевого интерфейса в ядре(eBPF)][ifstat] в
-    качестве тестового задания в НТЦ Метротек;
+  - [Collecting statistics of Linux network interface using eBPF][ifstat]
+    as my trial to NTC Metrotek on position "Embedded System
+    Developer";
 
-  - [Фреймворк под Xilinx Zynq 7000][zybo-z7] для написания bare
-    metal-кода без использования Xilinx SDK;
+  - [This repository][zybo-z7] is created for simplifing the interaction with
+    Xilinx Zynq 7000 using standard Linux open source utilities (such
+    as gcc, gdb, openocd) instead of proprietary Xilinx SDK;
 
-  - [Реверс-инжиниринг приложения под Android][drweb] в рамках
-    тестового задания в компанию Dr. Web на вакансию Вирусный
-    аналитик-стажёр Android;
+  - [Reverse engineering of Android application][drweb] as trial to
+    Dr.Web for position "Android Virus Analysist";
 
-  - В рамках университетских работ делаю поддержку контроллера
-    [ST M25P16 на Verilog][m25p16];
+  - [ST M25P16 in Verilog][m25p16] that I tried to develop as part
+    of the laboratory work in my university;
 
-  - Для зачёта по дисциплине Информатика в университете писал
-    [web-приложение для обучения алгебре логики][euler] на основе
-    кругов Эйлера;
+  - [Educational web application for children][euler] aimed to teach
+    how Euler diagram works;
 
-  - Резюме [тоже собирается][resume], но Makefile'ом и xelatex'ом.
+  - My resume [is written in LaTeX][resume] and builds using Makefile
 
-[resume]: http://git.nazaryev.ru/cgit/resume.git
-[euler]: http://git.nazaryev.ru/cgit/euler.git
-[csbook]: http://git.nazaryev.ru/cgit/csbook.git
-[drweb]: http://git.nazaryev.ru/cgit/drweb-aptitude-test.git
-[m25p16]: http://git.nazaryev.ru/cgit/circuit-design-lab234.git
-[medfilter]: http://git.nazaryev.ru/cgit/metrotek-aptitude-test.git
-[dotfiles]: http://git.nazaryev.ru/cgit/dotfiles.git
+[resume]: http://git.nazaryev.ru/resume.git
+[euler]: http://git.nazaryev.ru/euler.git
+[csbook]: http://git.nazaryev.ru/csbook.git
+[drweb]: http://git.nazaryev.ru/drweb-aptitude-test.git
+[m25p16]: http://git.nazaryev.ru/circuit-design-lab234.git
+[medfilter]: http://git.nazaryev.ru/metrotek-aptitude-test.git
+[dotfiles]: http://git.nazaryev.ru/dotfiles.git
 [ifstat]: https://github.com/3ap/ifstat
 [zybo-z7]: https://github.com/3ap/zybo-z7-baremetal

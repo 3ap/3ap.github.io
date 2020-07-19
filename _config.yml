@@ -1,22 +1,18 @@
-name: Сергей Назарьев
-position: Инженер Linux (embedded)
-location: Санкт-Петербург
-age: 22 года
+name: Sergey Nazaryev
+position: Embedded Linux Engineer
+location: Be'er Sheva, Israel
+age: 23 y.o.
 email: sergey@nazaryev.ru
 telegram: picokun
-description: Сергей Назарьев. Разработчик всяких IT-штук. Санкт-Петербург.
+description: Sergey Nazaryev
 markdown: kramdown
 
 links:
-  - title: "Резюме"
-    url:   "http://nazaryev.ru/resume.pdf"
+  - title: "Resume"
+    url:   "http://tmp.nazaryev.ru/resume-eng.pdf"
 
-  - title: "Файлопомойка"
+  - title: "File server"
     url:   "http://files.nazaryev.ru/"
-
-exclude:
-  - Gemfile
-  - Gemfile.lock
 
 services:
   - title: "Фильтр twitch-стримов"
@@ -33,11 +29,11 @@ sites:
     url:   "http://gazovik.ru"
 
   - title: "Океан-тур"
-    url:   "http://okean-tur.ru"
+    url:   "http://web.archive.org/web/20190410032411/http://www.okean-tur.ru/"
 
 products:
   - title: "MobiumApps"
-    url: http://cp.mobiumapps.com
+    url: http://web.archive.org/web/20170422022141/cp.mobiumapps.com/login
     screenshot: assets/products/mobium.png
     icon: assets/products/mobium_icon.png
     tags: [ asp.net, вёрстка ]
@@ -58,7 +54,7 @@ products:
                    верстальщиком и дизайнером.
 
   - title: "Эксхостинг"
-    url: unknown
+    url: http://web.archive.org/web/20120908054441/http://www.ex-hosting.ru/
     screenshot: assets/products/exhosting.png
     icon: assets/products/exhosting_icon.png
     tags: [ php, linux ]
@@ -87,7 +83,7 @@ products:
                    вместо традиционного бумажного меню.
 
   - title: "Юрком"
-    url: http://cpt-yurcom.ru
+    url: http://web.archive.org/web/20180428172144/https://cpt-yurcom.ru/
     screenshot: assets/products/yurcom.png
     icon: assets/products/yurcom_icon.png
     tags: [ php, modx ]

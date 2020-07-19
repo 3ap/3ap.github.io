@@ -1,7 +1,7 @@
 ---
 layout: articles
-title: Заметки
+title: notes
 ---
 
-Заметки
-=======
+Notes
+=====

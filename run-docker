@@ -1,0 +1,4 @@
+#!/bin/sh
+docker run -p 4000:4000 -p 4001:4001 \
+	-v $(pwd):/src jekyll serve -H 0.0.0.0 \
+	--livereload-port 4001 -wl --future

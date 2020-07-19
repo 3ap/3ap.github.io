@@ -1,7 +1,7 @@
 ---
 layout: projects
-title: Проекты
+title: Projects
 ---
 
-В чём я участвовал?
-===================
+In what I participated
+======================

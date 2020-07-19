@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^articles.html$ /notes.html [R=301,L]
