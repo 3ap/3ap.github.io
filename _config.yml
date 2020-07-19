@@ -1,15 +1,17 @@
 name: Сергей Назарьев
-position: Software Developer
-location: Saint Petersburg
+position: Инженер Linux (embedded)
+location: Санкт-Петербург
+age: 22 года
 email: sergey@nazaryev.ru
+telegram: picokun
 description: Сергей Назарьев. Разработчик всяких IT-штук. Санкт-Петербург.
 markdown: kramdown
 
 links:
-  - title: "CV"
-    url:   "http://forge.nazaryev.ru/CV.pdf"
+  - title: "Резюме"
+    url:   "http://nazaryev.ru/resume.pdf"
 
-  - title: "File Archive"
+  - title: "Файлопомойка"
     url:   "http://files.nazaryev.ru/"
 
 exclude:
@@ -30,9 +32,6 @@ sites:
   - title: "Газовик"
     url:   "http://gazovik.ru"
 
-  - title: "Кинотеатр Пионер"
-    url:   "http://pioner-kino.ru"
-
   - title: "Океан-тур"
     url:   "http://okean-tur.ru"
 
@@ -41,7 +40,7 @@ products:
     url: http://cp.mobiumapps.com
     screenshot: assets/products/mobium.png
     icon: assets/products/mobium_icon.png
-    tags: [ ASP.NET, Вёрстка ]
+    tags: [ asp.net, вёрстка ]
     description: >
                    Некоторое время по работе поддерживал панель для клиентов
                    сервиса по созданию кроссплатформенных приложений. В
@@ -52,7 +51,7 @@ products:
     url: http://galaxy-rpg.ru
     screenshot: assets/products/gy.png
     icon: assets/products/gy_icon.png
-    tags: [ MODx, PHP ]
+    tags: [ modx, php ]
     description: >
                    По старой дружбе с клиентом выступил в этом проекте в роли
                    менеджера и программиста: тесно взаимодействовал с клиентом,
@@ -62,7 +61,7 @@ products:
     url: unknown
     screenshot: assets/products/exhosting.png
     icon: assets/products/exhosting_icon.png
-    tags: [ PHP, Linux ]
+    tags: [ php, linux ]
     description: >
                    Ныне уже несуществующий игровой хостинг. Для него была
                    сделана удобная и простая панель для управления игровыми
@@ -73,7 +72,7 @@ products:
     url: https://play.google.com/store/apps/details?id=ru.copypaste
     screenshot: assets/products/kopipasta.png
     icon: assets/products/kopipasta_icon.png
-    tags: [ Android, Java ]
+    tags: [ android, java ]
     description: >
                    Читалка сайта Kopipasta.ru с кэшированием и системой
                    избранного. Проба пера.
@@ -82,7 +81,7 @@ products:
     url: unknown
     screenshot: assets/products/lovesushi.png
     icon: assets/products/lovesushi_icon.png
-    tags: [ Android, Java ]
+    tags: [ android, java ]
     description: >
                    Меню для суши-бара Love Суши (г. Саратов). Используется
                    вместо традиционного бумажного меню.
@@ -91,7 +90,7 @@ products:
     url: http://cpt-yurcom.ru
     screenshot: assets/products/yurcom.png
     icon: assets/products/yurcom_icon.png
-    tags: [ PHP, MODx ]
+    tags: [ php, modx ]
     description: >
                    Портал юристов, сделанный под эгидой Nopreset (топовой
                    web-студии г. Саратова). Реализован back-end под управлением
@@ -102,7 +101,7 @@ products:
     url: unknown
     screenshot: assets/products/emuteam.png
     icon: assets/products/emuteam_icon.png
-    tags: [ Вёрстка, Дизайн ]
+    tags: [ вёрстка, дизайн ]
     description: >
                    Сайт «стримеров» — игроков, показывающих игровой процесс в
                    прямом эфире. Я был их посетителем, когда ещё их сайт был

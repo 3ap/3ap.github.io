@@ -1,16 +1,30 @@
-body {
-  overflow-y: scroll;
+@font-face {
+  font-family:Graphik LC;
+  src:url(/assets/Graphik-Bold-Cy-Web.eot);
+  src:url(/assets/Graphik-Bold-Cy-Web.eot?#iefix) format("embedded-opentype"),url(/assets/Graphik-Bold-Cy-Web.woff) format("woff"),url(/assets/Graphik-Bold-Cy-Web.ttf) format("truetype"),url(/assets/Graphik-Bold-Cy-Web.svg#Graphik-Bold-Cy) format("svg");
+  font-weight:700;
+  font-style:normal
+}
+
+@font-face {
+  font-family:Graphik LC;
+  src:url(/assets/Graphik-Regular-Cy-Web.eot);
+  src:url(/assets/Graphik-Regular-Cy-Web.eot?#iefix) format("embedded-opentype"),url(/assets/Graphik-Regular-Cy-Web.woff) format("woff"),url(/assets/Graphik-Regular-Cy-Web.ttf) format("truetype"),url(/assets/Graphik-Regular-Cy-Web.svg#Graphik-Regular-Cy) format("svg");
+  font-weight:400;
+  font-style:normal;
+  font-stretch:normal
 }
 
 html, body {
+  -webkit-overflow-scrolling: auto;
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
+  line-height: 1.5;
 
   text-rendering: optimizeLegibility;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  line-height: 1.6;
+  font-family: "Graphik LC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #444;
   font-size: 18px;
 }
@@ -64,52 +78,51 @@ img, .product-tags {
   background: none repeat scroll 0% 0% #D6EDFC;
 }
 
-.contacts {
-  padding-top: 5px;
-  float: left;
-}
-
-.contacts__position {
-  vertical-align: middle;
-  line-height: 15px;
-  font-size: 15px;
-}
-
 .contacts__name {
   font-size: 25px;
 }
 
-.post {
-  padding: 20px 40px;
+.contacts__info {
+  font-size: 14px;
+  padding: 10px 0 0 0;
 }
 
-main {
-  width: 1160px;
+footer {
+  height: 339px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 50px;
 }
 
-nav {
-  width: 1160px;
-  margin: 0 40px;
-  background: white;
-  height: 80px;
+.wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+.page {
+  padding-top: 30px;
+  padding-left: 60px;
+  width: 1000px;
+  padding-bottom: 380px;
+}
+
+.menu {
+  width: 100%;
+  padding: 20px 0 20px 0;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  list-style-type: none;
+  line-height: 36px;
+  border-top: 1px solid #f0f0f0;
   border-bottom: 1px solid #f0f0f0;
 }
 
-.menu-horizontal {
-  float: left;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.menu-horizontal__item {
-  margin: 0px 0px 0px 15px;
-  display: inline;
-  float: left;
+.menu__item {
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .game {
@@ -121,19 +134,97 @@ nav {
   height: 339px;
 }
 
-.menu {
-  padding-top: 10px;
-  float: left;
+.menu-container {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  flex: 0 0 230px;
+  text-align: center;
+  background: white;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  padding: 0 0 0 60px;
+  flex-grow: 3;
+}
+
+.page {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.email {
+  font-size: 14px;
+}
+
+@media (max-width: 800px) {
+  html, body {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .page {
+    flex-direction: column;
+    width: auto !important;
+    padding-left: 0px !important;
+    padding-top: 20px !important;
+  }
+
+  .email {
+    display: none;
+  }
+
+  nav {
+    flex: 0 0 0;
+    margin-bottom: 10px;
+  }
+
+  .contacts__position {
+    display: inline;
+  }
+
+  .contacts__info {
+    padding: 10px 18px 0 18px;
+  }
+
+  .menu {
+    padding: 10px 0 10px 0;
+    line-height: 1.5;
+  }
+
+  menu li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+    font-size: 13px !important;
+  }
+
+  main {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  main p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0px !important;
+  }
 }
 
 .additional {
-  padding: 50px;
+  padding: 0 50px 50px 50px;
 }
 
 .additional h2 {
   padding: 0;
   margin: 0;
-  font-size: 60px;
+  font-size: 48px;
 }
 
 .additional ul li {
@@ -144,19 +235,8 @@ nav {
   content: "— ";
 }
 
-.product-photo {
-  display: none;
-  float: left;
-  padding-top: 10px;
-  width: 250px;
-}
-
-.product-photo img {
-  width: 280px;
-}
-
 .product-tags {
-  padding-left: 40px;
+  float: left;
   text-align: left;
 }
 
@@ -166,45 +246,54 @@ nav {
   margin: 2px;
   background: #4779f6;
   border-radius: 15px;
-}
-
-.products {
-  padding: 15px 35px;
+  font-size: 10px;
 }
 
 .products__item {
-  display: inline-block;
-  width: 325px;
-  margin: 5px;
-  border: 1px solid #ddd;
+  margin: 0px 10px 20px 5px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
 }
 
-.product-info {
-  padding: 20px 10px 15px 25px;
+.products__item:last-child {
+  border: 0;
+  padding-bottom: 0;
 }
 
 .product-description {
-  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   line-height: 1.5;
-  max-height: 170px;
-  height: 170px;
+  font-size: 16px;
 }
 
 .product-icon {
-  float: left;
-  padding-right: 10px;
-  height: 55px;
+  display: inline-block;
+  padding-right: 2px;
+  vertical-align: middle;
+  height: 20px;
 }
 
 .product-header {
-  margin-bottom: 10px;
-  height: 55px;
+  height: 30px;
 }
 
 .product-title {
-  display: block;
-  padding-top: 10px;
-  font-size: 24px;
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: baseline;
+
+  color: #282425;
+  font-weight: 900;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.product-link {
+  padding-top: 7px;
+  padding-right: 10px;
+  float: right;
+  font-size: 12px;
 }
 
 .product-link-passive:hover {
@@ -212,8 +301,7 @@ nav {
 }
 
 main ul, main ol {
-  margin-left: 2em;
-  margin-bottom: 1em;
+  margin-left: 27px;
 }
 
 main ul li:before {
@@ -226,23 +314,31 @@ main ul li:before {
   position: absolute;
 }
 
+ul p, main p, ul {
+  line-height: 1.7;
+}
+
 main ul p {
   margin: 0px;
-  line-height: 31px;
 }
 
 main p {
-  line-height: 25px;
   margin: 20px;
+}
+
+main pre {
+  margin: 20px;
+  background: rgba(0,0,0,0.02);
+  padding: 15px;
 }
 
 main ul {
   padding: 0;
   list-style: none;
-  line-height: 31px;
 }
 
 main h1, main h2 {
+  margin: 0;
   padding: 0;
   color: #282425;
   font-weight: 900;

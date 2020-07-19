@@ -4,19 +4,28 @@
     <meta charset="utf-8" />
 
     <title>{% if page.title %}{{ page.title | escape }} ≡ {% endif %}{{ site.name }}</title>
-    <meta name="description" content="{{ description }}" />
+    <meta name="description" content="{{ page.description }}" />
 
     <link rel="stylesheet" href="{{ "/assets/style.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/syntax.css" | relative_url }}">
     <link href="{{ "/assets/favicon.ico" | relative_url }}" rel="shortcut icon" type="image/x-icon" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+    <div class="wrapper">
     <div class="page">
       {% include nav.html %}
       {{ content }}
     </div>
-    <div class="clear"></div>
-    <script type="text/javascript" src={{ "/assets/age.js" | relative_url }}></script>
+    <footer>
+      <iframe src="//nazaryev.ru/assets/game/game.html" id="game" class="game"></iframe>
+      <script>
+        document.querySelector("#game").onload = function() {
+          this.contentWindow.focus();
+        }
+      </script>
+    </footer>
+    </div>
   </body>
 </html>

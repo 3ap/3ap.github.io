@@ -1,0 +1,473 @@
+<html>
+	<head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				var clientId = null;
+				var clientSocket = null;
+
+				var WIDTH_STEP= 6; // Ширина шага
+
+				// Класс игрока
+				function Player(name, x, character) {
+					this.character = character;
+					this.action = 'standingRight';
+					this.name = name;
+					this.remove = false;
+				  this.widthStep = WIDTH_STEP; // Ширина шага
+
+					this.x = x;
+					this.newX = 0;
+
+					this.animation = 0;
+
+					this.standLeft = function(x) {
+						this.action = 'standingLeft';
+						this.animation = 0;
+            this.widthStep = WIDTH_STEP;
+					}
+
+					this.standRight = function(x) {
+						this.action = 'standingRight';
+						this.animation = 0;
+            this.widthStep = WIDTH_STEP;
+					}
+
+					this.move = function(x) {
+						this.newX = x;
+						this.animation = 0;
+
+						if(this.x > x)
+							this.action = 'movingLeft';
+						else if(this.x < x)
+							this.action = 'movingRight';
+					}
+				}
+
+				// Экземпляры игроков
+				var players = {};
+
+				// Экземпляры объектов
+				var entities = [];
+
+				// Параметры поля
+				var battlefield = {};
+
+				// Параметры показываемоего участка
+				var show = {}
+
+				// Константы
+				var me = "ME"; // Идентификатор, по которому находим себя
+				var heightFloor = 330; // Высота пола
+				var heightNickname = 20; // Расстояние между игроком и его ником
+				var fps = 20; // Количество отрисовываний в секунду
+
+				function Entity(x, object) {
+					this.object = object;
+					this.x = x;
+				}
+
+				var background_with_entities_loaded = false;
+				var background_with_entities = new Image();
+
+				var objects = {
+					"forest": {resource: new Image(), url: "objects/forest.png",height:57,width:106},
+					"lamp": {resource: new Image(), url: "objects/lamp.png",height:83,width:50},
+					"shop-blue": {resource: new Image(), url: "objects/shop-blue.png",height:97,width:150},
+					"shop-red": {resource: new Image(), url: "objects/shop-red.png",height:97,width:150},
+					"shop-violet": {resource: new Image(), url: "objects/shop-violet.png",height:97,width:150},
+					"sign-blue": {resource: new Image(), url: "objects/sign-blue.png",height:23,width:23},
+					"tall-green": {resource: new Image(), url: "objects/tall-green.png",height:170,width:129},
+					"tall-red": {resource: new Image(), url: "objects/tall-red.png",height:170,width:129},
+					"tall-violet": {resource: new Image(), url: "objects/tall-violet.png",height:170,width:129},
+					"trash": {resource: new Image(), url: "objects/trash.png",height:16,width:17},
+					"wide-gray": {resource: new Image(), url: "objects/wide-gray.png",height:123,width:121},
+					"wide-green": {resource: new Image(), url: "objects/wide-green.png",height:123,width:121},
+					"wide-violet": {resource: new Image(), url: "objects/wide-violet.png",height:123,width:121}
+				};
+
+				// Описание шкурок
+				var characters = {
+					i : {
+						resource : new Image(),
+						url : "ios.png",
+						height : 55,
+						width : 37,
+						animations : {
+							standingLeft : [[0+37*8,0]],
+							standingRight : [[0+37*9,0]],
+							movingLeft : [[0+37*0,0],[0+37*1,0],[0+37*2,0],[0+37*3,0],[0+37*4,0],[0+37*5,0],[0+37*6,0],[0+37*7,0]],
+							movingRight : [[0+37*10,0],[0+37*11,0],[0+37*12,0],[0+37*13,0],[0+37*14,0],[0+37*15,0],[0+37*16,0],[0+37*17,0]],
+						}
+					},
+          android : {
+                  resource : new Image(),
+                  url : "android.png",
+                  height : 55,
+                  width : 37,
+                  animations : {
+                          standingLeft : [[0+37*8,0]],
+                          standingRight : [[0+37*9,0]],
+                          movingLeft : [[0+37*0,0],[0+37*1,0],[0+37*2,0],[0+37*3,0],[0+37*4,0],[0+37*5,0],[0+37*6,0],[0+37*7,0]],
+                          movingRight : [[0+37*10,0],[0+37*11,0],[0+37*12,0],[0+37*13,0],[0+37*14,0],[0+37*15,0],[0+37*16,0],[0+37*17,0]],
+                  }
+          },
+					stollman : {
+						resource : new Image(),
+						url : "stollman.png",
+						height : 55,
+						width : 37,
+						animations : {
+							standingLeft : [[0+37*8,0]],
+							standingRight : [[0+37*9,0]],
+							movingLeft : [[0+37*0,0],[0+37*1,0],[0+37*2,0],[0+37*3,0],[0+37*4,0],[0+37*5,0],[0+37*6,0],[0+37*7,0]],
+							movingRight : [[0+37*10,0],[0+37*11,0],[0+37*12,0],[0+37*13,0],[0+37*14,0],[0+37*15,0],[0+37*16,0],[0+37*17,0]],
+						}
+					},
+				};
+
+				// Случайное число от min до max
+				function rand(min, max) {
+				  return Math.floor(Math.random() * (max - min + 1)) + min;
+				}
+
+				function init() {
+						var width = 3392;
+						var height = 339;
+            battlefield["canvas"] = document.createElement('canvas');
+            battlefield["context"] = battlefield["canvas"].getContext('2d');
+            battlefield["width"] = width;
+            battlefield["height"] = height;
+            show["canvas"] = document.getElementById("show");
+            show["context"] = show["canvas"].getContext('2d');
+        }
+				init();
+
+				// Выполняется, когда всё загружено
+				function ready() {
+					if(background_loaded && object_loaded == object_names.length && !background_with_entities_loaded)
+						makeBackground();
+					else if(background_with_entities_loaded && character_loaded == character_names.length && background_loaded && object_loaded == object_names.length) {
+						players[me] = new Player("me",
+                                     rand(30, battlefield["width"]-30),
+                                     character_names[rand(0,character_names.length-1)]
+            ); // создаём своего персонажа
+
+						$("#character").val(players[me].character);
+
+						//sync(); // запускаем сервис синхронизации
+						moving(); // запускаем сервис движения
+						draw(); // запускаем сервис отрисовывания
+					}
+				}
+				/*
+				// Сервис синхронизации
+				function sync() {
+					if(clientSocket == null) {
+						clientSocket = new WebSocket("ws://nazaryev.ru:8080/");
+						clientSocket.onmessage = function(event) {
+							var data = JSON.parse(event.data);
+							console.log(data);
+							if(clientId == null) {
+								clientId = data.id;
+								return;
+							}
+
+                                                	$.each(players, function(id, player) {
+								players[id].remove = true;
+                                                	});
+
+	                                                players[me].remove = false;
+        	                                        $.each(data, function(id, player) {
+                	                                        if(id != clientId)
+								if(players[id] === undefined) {
+                        	                                        players[id] = new Player(player['name'], parseInt(player['x']), player['character'])
+                                	                        } else {
+                                        	                        players[id].move(player['x']);
+                                                	                players[id].name = player['name'];
+                                                        	        players[id].character = player['character'];
+                                                                	players[id].remove = false;
+	                                                        }
+        	                                        });
+
+                	                                $.each(players, function(id, player) {
+                        	                                if(players[id].remove) delete players[id];
+                                	                });
+							clientSocket.send(JSON.stringify({id: clientId, x: players[me].x, name: players[me].name, character: players[me].character}));
+						};
+					}
+          */
+					/*$.getJSON("game.php?x=" + players[me].x + "&name=" + players[me].name + "&character=" + players[me].character, function(data) {
+
+						$.each(players, function(id, player) {
+							players[id].remove = true;
+						});
+
+						players[me].remove = false;
+						$.each(data, function(id, player) {
+							if(id != clientId) {
+								if(typeof players[id] == 'undefined') {
+									players[id] = new Player(player['name'], parseInt(player['x']), player['character'])
+								} else {
+									players[id].move(player['x']);
+									players[id].name = player['name'];
+									players[id].character = player['character'];
+									players[id].remove = false;
+								}
+							}
+						});
+
+						$.each(players, function(id, player) {
+							if(players[id].remove) delete players[id];
+						});
+
+						setTimeout (sync, 10000)
+					});
+				}
+				*/
+				// Сервис движения
+        function moving() {
+          for(var key in players) {
+            var currentPlayer = players[key];
+            if(currentPlayer.action == 'movingRight' || currentPlayer.action == 'movingLeft') {
+              if(currentPlayer.action == 'movingRight' && currentPlayer.x < currentPlayer.newX) {
+                currentPlayer.widthStep += 0.1;
+                currentPlayer.x += currentPlayer.widthStep;
+              }
+              else if(currentPlayer.action == 'movingLeft' && currentPlayer.x > currentPlayer.newX) {
+                currentPlayer.widthStep += 0.1;
+                currentPlayer.x -= currentPlayer.widthStep;
+              }
+              else if(currentPlayer.action == 'movingLeft')
+                currentPlayer.standLeft();
+              else if(currentPlayer.action == 'movingRight')
+                currentPlayer.standRight();
+
+              animation(currentPlayer);
+            }
+          }
+
+          setTimeout (moving, 50)
+        }
+
+				// Обновление анимации персонажа при каком-либо действии
+				function animation(currentPlayer) {
+					if(currentPlayer.animation+1 < characters[currentPlayer.character]["animations"][currentPlayer.action].length) currentPlayer.animation++;
+					else if(currentPlayer.animation+1 >= characters[currentPlayer.character]["animations"][currentPlayer.action].length) currentPlayer.animation = 0;
+				}
+
+        function makeBackground() {
+          clear();
+
+          var parts = 35;
+          var offset = battlefield["width"] / parts;
+
+          for(var i = 1; i <= 300; i++) {
+            var object = object_names[rand(0, object_names.length-1)];
+            var x = rand((i-1)*offset, i*offset);
+            entities.push(new Entity(x, object));
+          }
+
+          battlefield["context"].drawImage(background, 0, 0);
+
+          for(var key in entities) {
+            var currentEntity = entities[key];
+            battlefield["context"].drawImage(
+                objects[currentEntity.object]["resource"],
+                0,
+                0,
+                objects[currentEntity.object]["width"],
+                objects[currentEntity.object]["height"],
+                currentEntity.x,
+                heightFloor - objects[currentEntity.object]["height"],
+                objects[currentEntity.object]["width"],
+                objects[currentEntity.object]["height"]
+                );
+
+          }
+
+          background_with_entities.src = battlefield["canvas"].toDataURL();
+          background_with_entities.onload = function() {
+            background_with_entities_loaded = true;
+            ready();
+          }
+        }
+
+				function clear() {
+          battlefield["canvas"].width = battlefield["width"];
+          battlefield["canvas"].height = battlefield["height"];
+				}
+
+				// Сервис отрисовывания кадров
+				function draw() {
+					// Очищаем холст всего поля
+					battlefield["canvas"].width = battlefield["width"];
+					battlefield["canvas"].height = battlefield["height"];
+
+					// Рисуем фон
+					battlefield["context"].drawImage(background_with_entities, 0, 0);
+
+					// Рисуем игроков и их ники
+					for(var key in players) {
+						var currentPlayer = players[key];
+						battlefield["context"].shadowColor = "rgba(0,0,0,0)";
+						battlefield["context"].drawImage(
+							characters[currentPlayer.character]["resource"],
+							characters[currentPlayer.character]["animations"][currentPlayer.action][currentPlayer.animation][0],
+							characters[currentPlayer.character]["animations"][currentPlayer.action][currentPlayer.animation][1],
+							characters[currentPlayer.character]["width"],
+							characters[currentPlayer.character]["height"],
+							currentPlayer.x,
+							heightFloor - characters[currentPlayer.character]["height"],
+							characters[currentPlayer.character]["width"],
+							characters[currentPlayer.character]["height"]
+						);
+
+						battlefield["context"].font = "bold 12px Arial";
+
+						battlefield["context"].shadowColor = "#000";
+						battlefield["context"].shadowOffsetX = 1;
+						battlefield["context"].shadowOffsetY = 1;
+						battlefield["context"].shadowBlur = 2;
+
+						battlefield["context"].fillStyle = "#fff";
+						battlefield["context"].textAlign = 'center';
+
+						battlefield["context"].fillText(currentPlayer.name, currentPlayer.x + (characters[currentPlayer.character]["width"]/2), heightFloor-heightNickname-characters[currentPlayer.character]["height"]);
+					}
+
+					// Очищаем холст видимого участка
+					show["canvas"].width = document.body.clientWidth; // рисуем по ширине экрана
+					show["canvas"].height = battlefield["height"]; // по высоте поля
+
+					// Определяем видимый участок и отрисовываем его
+					var m = Math.min((players[me].x+show["canvas"].width/2) - show["canvas"].width, battlefield["width"]-show["canvas"].width);
+					show["context"].drawImage(
+						battlefield["canvas"],
+						((m < 0) ? 0 : m), 0,
+						show["canvas"].width,
+						show["canvas"].height,
+						0, 0,
+						show["canvas"].width,
+						show["canvas"].height
+					);
+					setTimeout (draw, 1000 / fps)
+				}
+
+				// Количество шкурок
+				var character_names = [];
+				for (var name in characters) character_names[character_names.length] = name;
+
+				// Количество объектов
+				var object_names = [];
+				for (var name in objects) object_names[object_names.length] = name;
+
+				// Загрузка шкурок
+				var character_loaded = 0;
+				for(var key in characters) {
+					characters[key]["resource"].src = characters[key]["url"];
+					characters[key]["resource"].onload = function() {
+						character_loaded++;
+						ready();
+					}
+				}
+
+				var object_loaded = 0;
+				for(var key in objects) {
+					objects[key]["resource"].src = objects[key]["url"];
+					objects[key]["resource"].onload = function() {
+						object_loaded++;
+						ready();
+					}
+				}
+
+				// Загрузка фона
+				var background_loaded = false; // Загрузился ли фон?
+				var background = new Image();
+				background.src = 'world.png';
+				background.onload = function() {
+					background_loaded = true;
+					ready();
+				}
+
+				// Изменение ника
+				$("#nickname").change(function() {
+					if($(this).val().length > 0) players[me].name = $(this).val();
+				});
+
+				// Изменение шкурки
+				$("#character").change(function() {
+					players[me].character = $(this).val();
+				});
+
+				// Запрещаем писать пробелы
+				$("#nickname").keydown(function(e) {
+				  if (e.keyCode == 32) return false;
+				});
+
+				// Обрабатываем отжатие клавиши
+				$(document).keyup(function(e){
+					if (e.keyCode == 37) {
+					   players[me].standLeft();
+					   return false;
+					} else if(e.keyCode == 39) {
+					   players[me].standRight();
+					   return false;
+					}
+
+				});
+
+				// Обрабатываем нажатие клавиши
+				$(document).keydown(function(e) {
+					if (e.keyCode == 37) {
+					   if(players[me].action != 'movingRight' && players[me].action != 'movingLeft') players[me].move(-Infinity);
+					   return false;
+					} else if(e.keyCode == 39) {
+					   if(players[me].action != 'movingRight' && players[me].action != 'movingLeft') players[me].move(Infinity);
+					   return false;
+					}
+				});
+			});
+    </script>
+
+		<style>
+			html, body {
+				padding: 0;
+				margin: 0;
+				height:100%;
+				overflow-y: hidden;
+			}
+			.container {
+				min-height: 100%;
+				height: auto !important;
+				height: 100%;
+			}
+
+			#footer {
+				background: url(world.png);
+				width: 100%;
+				height: 339px;
+			}
+
+			canvas {
+				width: 100%;
+				height: 339px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+		   <div id="footer">
+				<canvas id='show'></canvas>
+				<div style="position: relative; margin-left: 5px;bottom: 25px;">
+					<input maxlength=20 type="text" id="nickname" value="me" style="height: 15px; font-size: 10px;"/>
+					<select id="character" style="height: 15px; font-size: 10px;">
+						<option value="i">iMan</option>
+						<option value="android">Android</option>
+						<option value="stollman">Stollman</option>
+					</select>
+				</div>
+		   </div>
+		</div>
+	</body>
+</html>

@@ -1,72 +1,87 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
 
-<main>
-  <div class="products">
-    <div class="products-inner">
-      {% for product in site.products %}
-      <section class="products__item">
-        <div class="product-photo">
-          <img src="{{ screenshot }}" />
-          <div class="product-tags">
-          {% for tag in product.tags %}
-            <span class="product-tag">{{ tag }}</span>
-          {% endfor %}
+    <title>{% if page.title %}{{ page.title | escape }} ≡ {% endif %}{{ site.name }}</title>
+    <meta name="description" content="{{ page.description }}" />
+
+    <link rel="stylesheet" href="{{ "/assets/style.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/syntax.css" | relative_url }}">
+    <link href="{{ "/assets/favicon.ico" | relative_url }}" rel="shortcut icon" type="image/x-icon" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="wrapper">
+    <div class="page">
+    {% include nav.html %}
+      <main>
+        <div class="products">
+          <div class="products-inner">
+            {% for product in site.products %}
+            <section class="products__item">
+              <div class="product-info">
+                <div class="product-header">
+                  <img class="product-icon" src="{{ product.icon }}" />
+                  <span class="product-title">{{ product.title }}</span>
+                </div>
+                <div class="product-description">{{ product.description }}</div>
+                <div class="product-link">
+                  {% if product.url == "unknown" %}
+                    <a target="_blank" class="product-link-passive">Недоступно</a>
+                  {% else %}
+                    <a href="{{ product.url }}" target="_blank" class="product-link-active">Перейти на сайт</a>
+                  {% endif %}
+                </div>
+                <div class="product-tags">
+                {% for tag in product.tags %}
+                  <span class="product-tag">{{ tag }}</span>
+                {% endfor %}
+                </div>
+                <div class="clear"></div>
+              </div>
+            </section>
+            {% endfor %}
           </div>
         </div>
-        <div class="product-info">
-          <div class="product-header">
-            <img class="product-icon" src="{{ product.icon }}" />
-            <span class="product-title">{{ product.title }}</span>
-          </div>
-          <div class="product-description">{{ product.description }}</div>
-          <div class="product-link">
-            {% if product.url == "unknown" %}
-              <a target="_blank" class="product-link-passive">Недоступно</a>
-            {% else %}
-              <a href="{{ product.url }}" target="_blank" class="product-link-active">Перейти на сайт</a>
-            {% endif %}
-          </div>
+        <div class="clear"></div>
+      </main>
+    </div>
+    <footer style="padding-top: 0px;">
+      <div class="information">
+        <div class="additional">
+          <h2>
+            А также…
+          </h2>
+          <ul class="left">
+            <li>несколько сервисов:
+              <ul>
+              {% for service in site.services %}
+              <li><a class="product-link-active" target="_blank" href="{{ service.url }}">{{ service.title }}</a></li>
+              {% endfor %}
+              </ul>
+            </li>
+          </ul>
+          <ul class="right">
+            <li>множество мелких и/или неопубликованных сайтов:
+              <ul>
+              {% for item in site.sites %}
+              <li><a class="product-link-active" target="_blank" href="{{ item.url }}">{{ item.title }}</a></li>
+              {% endfor %}
+              </ul>
+            </li>
+          </ul>
+          <div class="clear"></div>
         </div>
-      </section>
-      {% endfor %}
-      <div class="clear"></div>
+      </div>
+      <iframe src="//nazaryev.ru/assets/game/game.html" id="game" class="game"></iframe>
+      <script>
+        document.querySelector("#game").onload = function() {
+          this.contentWindow.focus();
+        }
+      </script>
+    </footer>
     </div>
-  </div>
-  <div class="clear"></div>
-</main>
-<footer>
-  <div class="information">
-    <div class="additional">
-      <h2>
-        А также…
-      </h2>
-      <ul class="left">
-        <li>несколько сервисов:
-          <ul>
-          {% for service in site.services %}
-          <li><a class="product-link-active" target="_blank" href="{{ service.url }}">{{ service.title }}</a></li>
-          {% endfor %}
-          </ul>
-        </li>
-      </ul>
-      <ul class="right">
-        <li>множество мелких и/или неопубликованных сайтов:
-          <ul>
-          {% for item in site.sites %}
-          <li><a class="product-link-active" target="_blank" href="{{ item.url }}">{{ item.title }}</a></li>
-          {% endfor %}
-          </ul>
-        </li>
-      </ul>
-      <div class="clear"></div>
-    </div>
-  </div>
-  <iframe src="http://game.nazaryev.ru/game.html" id="game" class="game"></iframe>
-  <script>
-    document.querySelector("#game").onload = function() {
-      this.contentWindow.focus();
-    }
-  </script>
-</footer>
+  </body>
+</html>
