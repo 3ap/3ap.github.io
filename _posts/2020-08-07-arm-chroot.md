@@ -1,12 +1,14 @@
 ---
 layout: post
 title: "Build software for your ARM device using virtualization"
+excerpt_separator: <!--more-->
 ---
 
 Yesterday we've discussed one guy's problem in the chat. He had a
 device based on old ARM SoC with installed Linux on it. His target
 was to launch his own Qt application on it, however the Qt Framework
 on his device was too old.
+<!--more-->
 
 He asked the device vendor for cross-toolchain, kernel sources or at
 least instruction for building rootfs but his request was not
