@@ -1,11 +1,7 @@
 ---
-layout: page
+layout: post
+title: What can I show you
 ---
-
-What can I show you
-===================
-
-  - [Dotfiles][dotfiles] repo that I use on almost all of my devices;
 
   - [Collecting statistics of Linux network interface using eBPF][ifstat]
     as my trial to NTC Metrotek on position "Embedded System
@@ -14,6 +10,12 @@ What can I show you
   - [This repository][zybo-z7] is created for simplifing the interaction with
     Xilinx Zynq 7000 using standard Linux open source utilities (such
     as gcc, gdb, openocd) instead of proprietary Xilinx SDK;
+
+  - Several [notes][notes] on this site about my work;
+
+  - [Dotfiles][dotfiles] repo that I use on almost all of my devices;
+
+  - My resume [is written in LaTeX][resume] and built using Makefile
 
   - [Reverse engineering of Android application][drweb] as trial to
     Dr.Web for position "Android Virus Analysist";
@@ -24,8 +26,7 @@ What can I show you
   - [Educational web application for children][euler] aimed to teach
     how Euler diagram works;
 
-  - My resume [is written in LaTeX][resume] and built using Makefile
-
+[notes]: /notes.html
 [resume]: http://git.nazaryev.com/resume.git
 [euler]: http://git.nazaryev.com/euler.git
 [csbook]: http://git.nazaryev.com/csbook.git
