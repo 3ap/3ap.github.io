@@ -5,15 +5,15 @@
     </div>
     <div class="contacts__info">
       <div class="contacts__position">{{ site.position }}</div>
-      <span id="age">{{ site.age }}</span> @ {{ site.location }}
-      <span style="color: red; display: block; margin-top: 10px;"><b>Looking for a job</b></span>
+      <span id="age">{{ site.age }}</span> @ <span id="location">{{ site.location }}</span>
+      <span style="color: red; display: block;"><b>Looking for a job</b></span>
     </div>
   </div>
 
   <menu class="menu-container">
     <ul class="menu">
       {% for my_page in site.pages %}
-        {% if my_page.title %}
+        {% if my_page.title and my_page.url != '/' %}
           <li class="menu__item">
             <a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
           </li>
@@ -30,10 +30,9 @@
   </menu>
 
   <div class="email">
-    <b>E-mail</b>
-    <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-    <br>
-    <b>Telegram</b>
-    <a href="https://t.me/{{ site.telegram }}">@{{ site.telegram }}</a>
+    <ul>
+        <li><img src="" /><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li><a href="https://t.me/{{ site.telegram }}">{{ site.telegram }}</a></li>
+    </ul>
   </div>
 </nav>

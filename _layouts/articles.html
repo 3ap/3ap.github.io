@@ -1,12 +1,10 @@
 ---
-layout: page
+layout: post
 ---
 
-{{ content }}
-<ul>
 {% for post in site.posts %}
-  <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-  </li>
+<p>
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><span class="post-date">{{ post.date | date: "%Y-%m-%d"}}</span>
+        {{ post.excerpt }}
+<hr>
 {% endfor %}
-</ul>

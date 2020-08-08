@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>{% if page.title %}{{ page.title | escape }} ≡ {% endif %}{{ site.name }}</title>
+    <title>{% if page.title and page.url != "/" %}{{ page.title | escape }} ≡ {% endif %}{{ site.name }}</title>
     <meta name="description" content="{{ page.description }}" />
 
     <link rel="stylesheet" href="{{ "/assets/style.css" | relative_url }}">
