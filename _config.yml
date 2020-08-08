@@ -16,12 +16,6 @@ links:
     url:   "http://files.nazaryev.com/"
 
 services:
-  - title: "Фильтр twitch-стримов"
-    url:   "http://twitch.nazaryev.ru"
-
-#  - title: "Минималистичный pastebin-like сервис"
-#    url:   "http://codeo.tk"
-
   - title: "File server"
     url:   "http://files.nazaryev.com"
 
@@ -33,16 +27,14 @@ sites:
     url:   "http://web.archive.org/web/20190410032411/http://www.okean-tur.ru/"
 
 products:
-  - title: "MobiumApps"
-    url: http://web.archive.org/web/20170422022141/cp.mobiumapps.com/login
-    screenshot: assets/products/mobium.png
-    icon: assets/products/mobium_icon.png
-    tags: [ asp.net, вёрстка ]
+  - title: "Translation of Bank Hapoalim Android app"
+    url: https://github.com/3ap/hapoalim-english-apk
+    screenshot: assets/products/hapoalim.png
+    icon: assets/products/hapoalim.png
+    tags: [ "android reverse engineering" ]
     description: >
-                   Некоторое время по работе поддерживал панель для клиентов
-                   сервиса по созданию кроссплатформенных приложений. В
-                   свободное от реализации функционала время приходилось
-                   подправлять UI.
+        2020. Made a hack for Bank Hapoalim Android application to
+        translate it from Hebrew to English and Russian.
 
   - title: "Galaxy RPG"
     url: http://galaxy-rpg.ru
@@ -50,9 +42,18 @@ products:
     icon: assets/products/gy_icon.png
     tags: [ modx, php ]
     description: >
-                   По старой дружбе с клиентом выступил в этом проекте в роли
-                   менеджера и программиста: тесно взаимодействовал с клиентом,
-                   верстальщиком и дизайнером.
+        2015. Worked as freelance manager and software developer:
+        hired graphic designer and front-end developer, checked
+        their work, implemented back-end. Created from scratch.
+
+  - title: "MobiumApps"
+    url: http://web.archive.org/web/20170422022141/cp.mobiumapps.com/login
+    screenshot: assets/products/mobium.png
+    icon: assets/products/mobium_icon.png
+    tags: [ asp.net, html ]
+    description: >
+        2014. Worked as ASP.NET back-end developer. Restyled the
+        control panel for customers
 
   - title: "Exhosting"
     url: http://web.archive.org/web/20120908054441/http://www.ex-hosting.ru/
@@ -60,19 +61,9 @@ products:
     icon: assets/products/exhosting_icon.png
     tags: [ php, linux ]
     description: >
-                   Ныне уже несуществующий игровой хостинг. Для него была
-                   сделана удобная и простая панель для управления игровыми
-                   серверами. Реализовано распределение серверов на несколько
-                   машин.
-
-  - title: "Kopipasta"
-    url: https://play.google.com/store/apps/details?id=ru.copypaste
-    screenshot: assets/products/kopipasta.png
-    icon: assets/products/kopipasta_icon.png
-    tags: [ android, java ]
-    description: >
-                   Читалка сайта Kopipasta.ru с кэшированием и системой
-                   избранного. Проба пера.
+        2012. Game hosting worked by PHP + Linux. I made simple
+        back-end for control/billing panel for customers. Created
+        from scratch.
 
   - title: "Love Sushi"
     url: unknown
@@ -80,8 +71,18 @@ products:
     icon: assets/products/lovesushi_icon.png
     tags: [ android, java ]
     description: >
-                   Меню для суши-бара Love Суши (г. Саратов). Используется
-                   вместо традиционного бумажного меню.
+        2011. Made a simple e-menu application for local Sushi bar
+        used on Android tablet. Created from scratch.
+
+  - title: "Kopipasta"
+    url: https://play.google.com/store/apps/details?id=ru.copypaste
+    screenshot: assets/products/kopipasta.png
+    icon: assets/products/kopipasta_icon.png
+    tags: [ android, java ]
+    description: >
+        2011. Android client for web portal Kopipasta.ru with caching
+        subsystem and favorites feature. Create from scratch, my
+        first Android app;
 
   - title: "CPT Yurcom"
     url: http://web.archive.org/web/20180428172144/https://cpt-yurcom.ru/
@@ -89,18 +90,13 @@ products:
     icon: assets/products/yurcom_icon.png
     tags: [ php, modx ]
     description: >
-                   Портал юристов, сделанный под эгидой Nopreset (топовой
-                   web-студии г. Саратова). Реализован back-end под управлением
-                   CMS\CMF MODx с огромным деревом ресурсов и всяческих
-                   хитростей.
+        2011. Implemented back-end for this site while I was working
+        for Nopreset (local web development company);
 
   - title: "Emuteam"
     url: unknown
     screenshot: assets/products/emuteam.png
     icon: assets/products/emuteam_icon.png
-    tags: [ вёрстка, дизайн ]
+    tags: [ html, web design ]
     description: >
-                   Сайт «стримеров» — игроков, показывающих игровой процесс в
-                   прямом эфире. Я был их посетителем, когда ещё их сайт был
-                   одностраничным. Провёл два редизайна, попробовал себя в роли
-                   веб-дизайнера.
+        2011. Site for game streamers
