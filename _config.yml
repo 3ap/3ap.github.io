@@ -6,6 +6,7 @@ email: sergey@nazaryev.com
 telegram: picokun
 description: Sergey Nazaryev
 markdown: kramdown
+exclude: ["build.sh", "run-docker"]
 
 links:
   - title: "Resume"
