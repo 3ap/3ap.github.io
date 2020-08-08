@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Build software for your ARM device using virtualization"
+description: "How to chroot into ARM environment"
 excerpt_separator: <!--more-->
 ---
 
@@ -12,8 +13,8 @@ on his device was too old.
 
 He asked the device vendor for cross-toolchain, kernel sources or at
 least instruction for building rootfs but his request was not
-satisified. Hopefully, there is at least `gcc` compiler on the
-device. In this case the option of building newer Qt Framework
+satisified. Hopefully, at least there was `gcc` compiler on the
+device. In such case the option of building newer Qt Framework
 "in-place" on the device is not so bad.
 
 Of course, cross-toolchain is the best solution for this problem. But
@@ -21,50 +22,52 @@ sometimes you don't have anything else but the working device with
 the operating system on SD card. It's almost miraculous if you also
 have a compiler on this system.
 
-However, you can't build *fat* software on the low-end ARM system, it
-will take days for builiding something like Qt Framework. Therefore,
+However, you can't build **fat** software on the low-end ARM system, it
+will take days to build something like Qt Framework. Therefore,
 in this case you have only two options:
 
   - build your own cross-toolchain using the appropriate `libc` and
-    `Linux kernel` version in accordance with the device's rootfs;
+    `Linux kernel` versions in accordance with the device's rootfs;
 
   - dump the rootfs of the device and launch the building process
     inside it on your host system.
 
-I want to discuss only the second option. So, in this case you can
+I want to discuss here the second option. So, in this case you can
 make virtual machine with full virtualization using `qemu-system-arm`
 and put the dumped rootfs and kernel into it. For full virtualization
-you need to emulate ARM processor and all needed hardware and run
-kernel code on it along with the code of all drivers, file systems
-and so on. It requires too many resources of your host system and
-still it will work very slow.
+you will emulate ARM processor and all needed hardware and run kernel
+code on it along with the code of all drivers, file systems and so
+on. It requires too many resources of your host system and still it
+will work very slow.
 
 However, there is another way to do it: you can emulate only ARM
 instructions for syscalls and "convert" it to the x86 syscalls. For
-this purpose there are several `qemu` utilties for it for all popular
-CPU architectures. For testing purpose, you can download any static
-compiled ARM binary for Linux (e.g. [busybox][busybox]) and launch
-it on your host system (`qemu-arm busybox`).
+this purpose there are several `qemu` utilties for all popular
+CPU architectures. In order to test it you can download any
+statically compiled ARM binary for Linux (e.g.
+[busybox-armv7][busybox]) and launch it on your host system
+(`qemu-arm busybox-armv7`).
 
-Moreover, you can chroot into your ARM rootfs, if you put
-`qemu-arm-static` into this rootfs. **Note**: `qemu-arm-static` should
-be static compiled because it can't access in runtime to your host
-libraries while being in chroot. Usually, there is `qemu-arm-static`
+Moreover, you can `chroot` into your ARM rootfs if you put
+`qemu-arm-static` into this rootfs. `qemu-arm-static` should be
+statically compiled because it can't access to your host libraries in
+runtime while being in chroot. Usually, there is `qemu-arm-static`
 package in your Linux repository (at least there are in Arch Linux,
 Alpine Linux and all Debian derivatives).
 
 So, if you try to chroot into it, the `/bin/bash` compiled for ARM
 systems will be launched via `qemu-arm-static` on your host x86
-system. Just a miracle!
+system. It's just a miracle!
 
-In addition, in chroot you will have access to the all cores of your
-processor, all available RAM and disk space.
+In addition, in chroot by default you will have an access to all the
+CPU cores, all available RAM and disk space.
 
-I compared full virtualization performance with performance of
-syscalls-only emulating: I run Qt 5.15.0 `configure` script (in the
-process of configuring it also builds `qmake`).
+I've compared full virtualization performance with performance of
+syscalls-only emulating. For this I run Qt 5.15.0 `configure` script
+for the both variants. `./configure` took much time because in the
+process of configuring it also builds `qmake`.
 
-Full virtualization:
+**Full virtualization**:
 
 ```
 time ./configure -skip qt3d -no-warnings-are-errors -release \
@@ -80,7 +83,7 @@ user 78m43.608s
 sys 7m22.934s
 ```
 
-Syscalls-only emulating:
+**Syscalls-only emulating**:
 
 ```
 time ./configure -skip qt3d -no-warnings-are-errors -release \
@@ -97,15 +100,17 @@ sys     0m23.783s
 ```
 
 As you see, the second variant was faster by the factor of 5 (17
-minutes vs 91 minutes) in comparison with the first one. Both of
+minutes vs 91 minutes) in comparison with the first one. Both
 variants used only one CPU core. Of course, it can be highly improved
-if we make `./configure` use all of cores while building `qmake`.
+if we make `./configure` use all the CPU cores while building `qmake`.
 Despite this improvement, 17 minutes is still very slow, if we
-compare it with native build: the same test on x86-based system
+compare it with the native build: the same test on x86-based system
 took only 2 minutes.
 
-If you are interested, you can try this trick yourself. This is a
-small instruction for getting chrooted into ARM rootfs on the example
+<hr/>
+
+If you are interested, you can try this trick by yourself. This is a
+small instruction for getting chroot'ed into ARM rootfs on the example
 of `Raspberry Pi OS`:
 
 1. Download `Raspberry Pi OS` lite image and unzip it:

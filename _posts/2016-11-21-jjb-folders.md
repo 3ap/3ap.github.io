@@ -2,6 +2,7 @@
 layout: post
 title: "Folders support in Jenkins Job Builder"
 description: "How to put the Jenkins job to the folder?"
+excerpt_separator: <!--more-->
 ---
 
 If you want to create and update your Jenkins Job in some folder
