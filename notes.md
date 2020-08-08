@@ -1,6 +1,6 @@
 ---
 layout: articles
-title: notes
+title: Notes
 ---
 
 Notes

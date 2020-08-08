@@ -2,33 +2,33 @@ name: Sergey Nazaryev
 position: Embedded Linux Engineer
 location: Be'er Sheva, Israel
 age: 23 y.o.
-email: sergey@nazaryev.ru
+email: sergey@nazaryev.com
 telegram: picokun
 description: Sergey Nazaryev
 markdown: kramdown
 
 links:
   - title: "Resume"
-    url:   "http://tmp.nazaryev.ru/resume-eng.pdf"
+    url:   "http://nazaryev.com/resume.pdf"
 
   - title: "File server"
-    url:   "http://files.nazaryev.ru/"
+    url:   "http://files.nazaryev.com/"
 
 services:
   - title: "Фильтр twitch-стримов"
     url:   "http://twitch.nazaryev.ru"
 
-  - title: "Минималистичный pastebin-like сервис"
-    url:   "http://codeo.tk"
+#  - title: "Минималистичный pastebin-like сервис"
+#    url:   "http://codeo.tk"
 
-  - title: "Файлопомойка"
-    url:   "http://files.nazaryev.ru"
+  - title: "File server"
+    url:   "http://files.nazaryev.com"
 
 sites:
-  - title: "Газовик"
+  - title: "Gazovik"
     url:   "http://gazovik.ru"
 
-  - title: "Океан-тур"
+  - title: "Okean-tur"
     url:   "http://web.archive.org/web/20190410032411/http://www.okean-tur.ru/"
 
 products:
@@ -53,7 +53,7 @@ products:
                    менеджера и программиста: тесно взаимодействовал с клиентом,
                    верстальщиком и дизайнером.
 
-  - title: "Эксхостинг"
+  - title: "Exhosting"
     url: http://web.archive.org/web/20120908054441/http://www.ex-hosting.ru/
     screenshot: assets/products/exhosting.png
     icon: assets/products/exhosting_icon.png
@@ -64,7 +64,7 @@ products:
                    серверами. Реализовано распределение серверов на несколько
                    машин.
 
-  - title: "Копипаста"
+  - title: "Kopipasta"
     url: https://play.google.com/store/apps/details?id=ru.copypaste
     screenshot: assets/products/kopipasta.png
     icon: assets/products/kopipasta_icon.png
@@ -73,7 +73,7 @@ products:
                    Читалка сайта Kopipasta.ru с кэшированием и системой
                    избранного. Проба пера.
 
-  - title: "Суши-бар"
+  - title: "Love Sushi"
     url: unknown
     screenshot: assets/products/lovesushi.png
     icon: assets/products/lovesushi_icon.png
@@ -82,7 +82,7 @@ products:
                    Меню для суши-бара Love Суши (г. Саратов). Используется
                    вместо традиционного бумажного меню.
 
-  - title: "Юрком"
+  - title: "CPT Yurcom"
     url: http://web.archive.org/web/20180428172144/https://cpt-yurcom.ru/
     screenshot: assets/products/yurcom.png
     icon: assets/products/yurcom_icon.png
@@ -93,7 +93,7 @@ products:
                    CMS\CMF MODx с огромным деревом ресурсов и всяческих
                    хитростей.
 
-  - title: "Эмутим"
+  - title: "Emuteam"
     url: unknown
     screenshot: assets/products/emuteam.png
     icon: assets/products/emuteam_icon.png
