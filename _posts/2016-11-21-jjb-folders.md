@@ -1,23 +1,21 @@
 ---
 layout: post
-title: "Поддержка папок в Jenkins Job Builder"
-description: "Как привязать job к определённой папке?"
+title: "Folders support in Jenkins Job Builder"
+description: "How to put the Jenkins job to the folder?"
 ---
 
-Для того, чтобы в [Jenkins Job Builder (jjb)](http://docs.openstack.org/infra/jenkins-job-builder/)
-создать и обновлять job в определённой папке, достаточно прописать в
-названии job'а полный путь а-ля:
+If you want to create and update your Jenkins Job in some folder
+using [Jenkins Job Builder (jjb)][jjb], you need to put the name of the
+folder into the name of the job:
 
 ```yaml
 - job:
     name: "developer/zar/buildroot"
 ```
 
-Таким образом job с названием `buildroot` попадёт в директорию
-`developer/zar`.
+**Note**: at this moment Jenkins Job Builder isn't able to create
+folder on demand by itself. This feature is not supported yet, but it
+will be sometimes, I hope. You can track the progress on this feature
+in Gerrit [here](https://review.openstack.org/#/c/134307/).
 
-**Важно**: на данный момент `jjb` не умеет
-самостоятельно создавать директории: поддержку этой фичи внедряют уже
-несколько лет, а проследить за прогрессом можно в официальном
-Gerrit'е создателей `jjb` [вот
-тут](https://review.openstack.org/#/c/134307/).
+[jjb]: http://docs.openstack.org/infra/jenkins-job-builder/
