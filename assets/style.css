@@ -25,7 +25,7 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.7;
 
   text-rendering: optimizeLegibility;
   font-family: -apple-system, BlinkMacSystemFont, "Graphik LC", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -66,7 +66,29 @@ a[href^="https://"]:after {
   margin-left: 3px;
 }
 
-a[href^="mailto:"]:before {
+.email a[href^="https://github.com"]:before {
+  background-image: url(/assets/github.png);
+  background-size: 20px 20px;
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: -10%;
+}
+
+.email a[href^="http://git.nazaryev.com"]:before {
+  background-image: url(/assets/git.png);
+  background-size: 20px 20px;
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: -17%;
+}
+
+.email a[href^="mailto:"]:before {
   background-image: url(/assets/email.png);
   background-size: 20px 16px;
   display: inline-block;
@@ -77,8 +99,7 @@ a[href^="mailto:"]:before {
   vertical-align: -17%;
 }
 
-a[href^="http://t.me"]:before,
-a[href^="https://t.me"]:before {
+.email a[href^="https://t.me"]:before {
   background-image: url(/assets/Telegram_logo.svg);
   background-size: 20px 16px;
   display: inline-block;
@@ -129,6 +150,7 @@ img, .product-tags {
 .wrapper {
   min-height: 100%;
   position: relative;
+  padding-left: 50px;
 }
 
 .menu {
@@ -153,42 +175,41 @@ img, .product-tags {
 
 .highlighter-rouge {
   background: #fafafa;
-  max-width: 720px;
+  max-width: 920px;
   overflow-x: auto;
   font-size: 14px;
   margin: 15px 0 15px 0;
 }
 
 .page {
-  margin: 0 auto;
-  max-width: 960px;
+  max-width: 1100px;
   padding-bottom: 200px;
   position: relative;
   z-index: 999;
 
   display: grid;
-  grid-template-columns: auto 200px;
-  grid-gap: 30px;
+  grid-template-columns: 250px auto;
+  grid-gap: 50px;
 }
 
 nav {
-  grid-column-start: 2;
+  grid-column-start: 1;
   grid-row-start: 1;
 
   padding: 30px 0 0 0;
   margin: 0;
-  text-align: left;
+  text-align: center;
 
   display: grid;
-  grid-template-rows: 100px 190px 100px;
+  grid-template-rows: 120px 190px 100px;
   grid-gap: 20px;
 }
 
 main {
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-row-start: 1;
 
-  padding: 30px 0 0 10px;
+  padding: 35px 0 0 10px;
 }
 
 footer {
@@ -211,10 +232,10 @@ footer {
 }
 
 .game {
-  opacity: 0.2;
+  opacity: 0.7;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   html, body {
     line-height: 1.7;
   }
@@ -242,7 +263,7 @@ footer {
   }
 
   main {
-    padding: 0;
+    padding: 0 0 20px 0;
 
     grid-row-start: 1;
     grid-column-start: 1;
@@ -301,6 +322,10 @@ footer {
   .email {
     text-align: center;
   }
+
+  .wrapper {
+    padding-left: 0;
+  }
 }
 
 .product-tags {
@@ -320,16 +345,6 @@ footer {
 .products {
   display: grid;
   grid-gap: 20px;
-}
-
-.products__item {
-  padding-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-}
-
-.products__item:last-child {
-  border: 0;
-  padding-bottom: 20px;
 }
 
 .product-icon {
@@ -367,7 +382,6 @@ footer {
   height: 20px;
   line-height: 20px;
 
-  color: #282425;
   font-weight: 900;
   letter-spacing: 0.035em;
   text-transform: uppercase;
@@ -388,15 +402,14 @@ footer {
   cursor: default !important;
 }
 
-main ul li:before {
+main ul li::marker {
   content: "— ";
-  display: inline-block;
-  width: 7px;
-  margin: 0px 0 0 -25px;
-  text-align: center;
-  font-size: 1em;
-  position: absolute;
 }
+
+main ul li {
+  padding-left: 10px;
+}
+
 
 main ul {
   list-style: none;
@@ -405,7 +418,6 @@ main ul {
 .post .post-title {
   margin: 0;
   padding: 0;
-  color: #282425;
   font-weight: 900;
   font-size: 24px;
   letter-spacing: 0.035em;
@@ -436,8 +448,7 @@ main ul {
 
 hr {
   border: 1px solid #eee;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 .email a {
@@ -465,4 +476,17 @@ ol li p {
 
 ul p {
   line-height: 1.7;
+}
+
+hr:last-child {
+  display: none;
+}
+
+#hiring {
+  color: #f27c7c;
+  display: block;
+}
+
+h1, h2, h3 {
+  color: #282425;
 }

@@ -6,7 +6,7 @@
     <div class="contacts__info">
       <div class="contacts__position">{{ site.position }}</div>
       <span id="age">{{ site.age }}</span> @ <span id="location">{{ site.location }}</span>
-      <span style="color: red; display: block;"><b>Looking for a job</b></span>
+      <span id="hiring"><b>Looking for a job</b></span>
     </div>
   </div>
 
@@ -31,8 +31,10 @@
 
   <div class="email">
     <ul>
-        <li><img src="" /><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        <li><a href="https://t.me/{{ site.telegram }}">{{ site.telegram }}</a></li>
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li><a href="https://t.me/{{ site.telegram }}">telegram</a></li>
+        <li><a href="https://github.com/3ap/">github</a></li>
+        <li><a href="http://git.nazaryev.com/">cgit</a></li>
     </ul>
   </div>
 </nav>
