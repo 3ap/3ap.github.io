@@ -10,7 +10,7 @@ exclude: ["docker-run", "docker-serve"]
 
 links:
   - title: "Resume"
-    url:   "http://nazaryev.com/resume.pdf"
+    url:   "/resume.pdf"
 
   - title: "File server"
     url:   "http://files.nazaryev.com/"
